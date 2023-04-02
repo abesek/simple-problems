@@ -6,21 +6,25 @@ public class Fibonacci {
         if (n < 1) {
             System.out.println(-1);
             return;
-        }      
-        for (int i = 0; i < n; i++) {
-            if (i <= 1) {
-                System.out.println(i);
-            } else {
-                c = a + b;
-                a = b;
-                b = c;
-                System.out.println(c);
-            }            
+        }
+        if (n == 1) {
+            System.out.println(0);
+            return;
+        }
+        System.out.printf("%d\n%d\n", 0, 1);
+        for (int i = 2; i < n; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+            System.out.println(c);
         }
     }
-    /* 
-     * looks much like iterative approach. swapping on recursive call and printing a+b
-     * Recursion useful for computing solution by solving sub problems.
+
+    /*
+     * looks much like iterative approach. swapping on recursive call and printing
+     * a+b.
+     * Could be improved.
+     * Hint: Recursion is useful for computing solution by solving sub problems.
      */
     static void computeFibonacciRecursive(int n, int a, int b, int i) {
         if (n < 1 || i >= n) {
@@ -34,6 +38,7 @@ public class Fibonacci {
             computeFibonacciRecursive(n, b, a + b, ++i);
         }
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter sequence length: ");
@@ -43,5 +48,5 @@ public class Fibonacci {
         computeFibonnaciIterative(n);
         System.out.println("Recursive version:");
         computeFibonacciRecursive(n, 0, 1, 0);
-    }    
+    }
 }
