@@ -21,22 +21,13 @@ public class Fibonacci {
     }
 
     /*
-     * looks much like iterative approach. swapping on recursive call and printing
-     * a+b.
-     * Could be improved.
-     * Hint: Recursion is useful for computing solution by solving sub problems.
+     * using sub problems approach. O(n times 2 power n) -- Bad.
      */
-    static void computeFibonacciRecursive(int n, int a, int b, int i) {
-        if (n < 1 || i >= n) {
-            return;
+    static int computeNthFibonacciRecursive(int n) {
+        if (n == 0 || n ==1) {
+            return n;
         }
-        if (i == 0 || i == 1) {
-            System.out.println(i);
-            computeFibonacciRecursive(n, a, b, ++i);
-        } else {
-            System.out.println(a + b);
-            computeFibonacciRecursive(n, b, a + b, ++i);
-        }
+        return computeNthFibonacciRecursive(n-1) + computeNthFibonacciRecursive(n-2);        
     }
 
     public static void main(String[] args) {
@@ -47,6 +38,8 @@ public class Fibonacci {
         System.out.println("Iterative version:");
         computeFibonnaciIterative(n);
         System.out.println("Recursive version:");
-        computeFibonacciRecursive(n, 0, 1, 0);
+        for (int i = 0; i < n; i++) {
+            System.out.println(computeNthFibonacciRecursive(i));
+        }
     }
 }
