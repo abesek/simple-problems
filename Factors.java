@@ -5,7 +5,7 @@ public class Factors {
     //square root of n will be in middle of factors list
     //negative factors??
     static void getFactors(int n) {
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
                 System.out.printf("(%d, %d)\n", i, n / i);
             }
