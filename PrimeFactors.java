@@ -1,23 +1,22 @@
 import java.util.Scanner;
 
 public class PrimeFactors {
-    static boolean isPrime(int n) {
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
-    }
     static void getFactors(int n) {
-        for (int i = 2; i < n; i++) {
-            if (isPrime(i)) {
-                int x = n;
-                while (x % i == 0) {
-                    System.out.println(i);
-                    x /= i;
-                }
+        //remove all 2 factors
+        while (n % 2 == 0) {
+            System.out.println(2);
+            n /= 2;
+        }
+        //n is odd by this point
+        for (int i = 3; i <= Math.sqrt(n); i += 2) { //skip even numbers
+            while (n % i == 0) {
+                System.out.println(i);
+                n /= i;
             }
         }
+        if (n > 1) System.out.println(n); 
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number: ");
